@@ -4,5 +4,8 @@ var gamesController = require('../controllers/games')
 
 /* GET users listing. */
 router.get('/', gamesController.index);
+router.get('/new', gamesController.new);
+
+router.post('/', gamesController.create);
 
 module.exports = router;
