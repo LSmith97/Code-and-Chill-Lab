@@ -12,4 +12,16 @@
     </form>
     <a href="/games/<%= foundGame._id %>/edit">Edit Game</a>
   </section>
+  <section>
+    <h1>Reviews</h1>
+    <form action="/games/<%= foundGame._id %>/reviews" method="POST">
+    <label> Review:
+        <input type="text" name="review" required>
+    </label>
+    <label> Rating:
+        <input type="number" name="rating" min="0" max="5" required>
+    </label>
+    <button type="submit">Submit Review</button>
+    </form>
+  </section>
 <%- include("../partials/footer") %>

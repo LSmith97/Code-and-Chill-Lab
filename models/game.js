@@ -2,6 +2,28 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const reviewSchema = new Schema({
+    review: {
+        type: String,
+        required: true
+    },
+    rating : {
+        type : Number,
+        required: true,
+        min: 0,
+        max: 5
+    },
+    time : {
+        type : Date,
+        required : true
+    }
+
+},
+{
+    timestamps: true,
+}
+)
+
 const gameSchema = new Schema({
     name: {
         type: String,
@@ -15,6 +37,7 @@ const gameSchema = new Schema({
         type: Date,
         default: new Date(),
     },
+    reviews: [reviewSchema]
 },
 {
     timestamps: true,
