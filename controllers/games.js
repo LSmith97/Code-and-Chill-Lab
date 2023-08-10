@@ -5,7 +5,8 @@ module.exports = {
     index,
     new: newGame,
     create,
-    show
+    show,
+    delete: removeGame,
 }
 
 async function index (req, res, next) {
@@ -47,5 +48,15 @@ async function show (req, res, next) {
         })
     } catch (error) {
         console.log(error)
+    }
+}
+
+async function removeGame(req,res) {
+    console.log("remove game")
+    try {
+        await Game.deleteOne(Game.findById(req.params.id));
+        res.redirect("/games")
+    } catch (error) {
+        console.log(error);
     }
 }

@@ -6,5 +6,9 @@
     <div><%= foundGame.rating %></div>
     <div>Release Date </div>
     <div><%= foundGame.releaseDate.toDateString() %></div>
+    <form action="/games/<%= foundGame._id %>?_method=DELETE"
+      class="delete-form" method="POST">
+      <button type="submit">Delete Game</button>
+    </form>
   </section>
 <%- include("../partials/footer") %>
