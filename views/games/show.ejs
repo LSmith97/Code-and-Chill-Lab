@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+<section id="show-page">
+    <div>Title: </div>
+    <div><%= foundGame.name %></div>
+    <div>Rating: </div>
+    <div><%= foundGame.rating %></div>
+    <div>Release Date </div>
+    <div><%= foundGame.releaseDate.toDateString() %></div>
+  </section>
+<%- include("../partials/footer") %>

@@ -7,5 +7,6 @@ router.get('/', gamesController.index);
 router.get('/new', gamesController.new);
 
 router.post('/', gamesController.create);
+router.get('/:id',gamesController.show)
 
 module.exports = router;

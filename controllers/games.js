@@ -5,12 +5,19 @@ module.exports = {
     index,
     new: newGame,
     create,
+    show
 }
 
-function index (req, res, next) {
-    res.render('games/index', {
-        title: "All Games"
-    });
+async function index (req, res, next) {
+    try {
+        const allGames = await Game.find({})
+        res.render('games/index', {
+            title: "All Games",
+            allGames
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function newGame(req, res) {
@@ -26,6 +33,18 @@ async function create(req, res) {
     try {
         const createdGame = await Game.create(gameData);
         res.redirect("/games");
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function show (req, res, next) {
+    try {
+        const foundGame = await Game.findById(req.params.id)
+        res.render('games/show', {
+            title: foundGame.name,
+            foundGame
+        })
     } catch (error) {
         console.log(error)
     }

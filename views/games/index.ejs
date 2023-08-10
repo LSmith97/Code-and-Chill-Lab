@@ -1,2 +1,20 @@
 <%- include("../partials/header") %>
+<table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Release Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% allGames.forEach(g => { %>
+            <tr>
+                <td><a href="/games/<%= g._id %>"><%= g.name %></a></td>
+                <td><%= g.rating %></td>
+                <td><%= g.releaseDate.toDateString() %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
 <%- include("../partials/footer") %>
