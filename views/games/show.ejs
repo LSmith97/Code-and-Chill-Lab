@@ -12,7 +12,8 @@
     </form>
     <a href="/games/<%= foundGame._id %>/edit">Edit Game</a>
   </section>
-  <section>
+
+  <section class="review-form">
     <h1>Reviews</h1>
     <form action="/games/<%= foundGame._id %>/reviews" method="POST">
     <label> Review:
@@ -23,5 +24,32 @@
     </label>
     <button type="submit">Submit Review</button>
     </form>
+  </section>
+
+  <section>
+    <% if (foundGame.reviews.length) {%>
+      <table>
+        <thead>
+            <tr>
+            <th>Review</th>
+            <th>Rating</th>
+            <th>Date</th>
+            <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% foundGame.reviews.forEach(r => { %>
+                <tr>
+                    <td><%= r.review %></td>
+                    <td><%= r.rating %></td>
+                    <td><%= r.time.toDateString() %></td>
+                    <td><%= r.time.toTimeString() %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%} else {%>
+      <p>No reviews yet</p>
+    <% } %>
   </section>
 <%- include("../partials/footer") %>

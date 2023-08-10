@@ -82,12 +82,12 @@ async function editGame (req,res) {
 async function update(req, res){
     try {
         const gameData = {...req.body}
-        
+
         const editedGame = await Game.findById(req.params.id)
         editedGame.name = gameData.name;
         editedGame.rating = gameData.rating;
         editedGame.releaseDate = gameData.releaseDate;
-        editedGame.save();
+        await editedGame.save();
 
         res.redirect(`/games/${req.params.id}`)
     } catch (error) {
