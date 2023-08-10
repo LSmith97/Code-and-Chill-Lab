@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 
-<form action="games/<%= editedGame._id %>?_method=PUT" method="POST">
+<form action="/games/<%= editedGame._id %>?_method=PUT" method="POST">
     <label> Title:
         <input type="text" name="name" value="<%= editedGame.name %>" required>
     </label>
@@ -24,7 +24,7 @@
     <label> Release Date:
         <input type="date" name="releaseDate" value="<%= date%>" required>
     </label>
-    <button type="submit">Add Game</button>
+    <button type="submit">Edit Game</button>
 </form>
 
 <%- include("../partials/footer") %>

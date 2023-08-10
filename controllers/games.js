@@ -7,7 +7,8 @@ module.exports = {
     create,
     show,
     delete: removeGame,
-    editGame
+    edit: editGame,
+    update
 }
 
 async function index (req, res, next) {
@@ -73,6 +74,22 @@ async function editGame (req,res) {
             editedGame,
             date: `${year}-${month}-${day}`
         })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function update(req, res){
+    try {
+        const gameData = {...req.body}
+        
+        const editedGame = await Game.findById(req.params.id)
+        editedGame.name = gameData.name;
+        editedGame.rating = gameData.rating;
+        editedGame.releaseDate = gameData.releaseDate;
+        editedGame.save();
+
+        res.redirect(`/games/${req.params.id}`)
     } catch (error) {
         console.log(error)
     }
