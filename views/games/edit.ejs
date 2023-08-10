@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+
+
+<form action="games/<%= editedGame._id %>?_method=PUT" method="POST">
+    <label> Title:
+        <input type="text" name="name" value="<%= editedGame.name %>" required>
+    </label>
+    <label> Rating:
+        <select name ="rating">
+            <option value="E"<% if(editedGame.rating === "E"){%>
+                <%= "selected" %>
+                <% } %>
+                >E</option>
+            <option value="T"<% if(editedGame.rating === "T"){%>
+                <%= "selected" %>
+                <% } %>
+                >T</option>
+            <option value="M"<% if(editedGame.rating === "M"){%>
+                <%= "selected" %>
+                <% } %>
+                >M</option>
+        </select>
+    </label>
+    <label> Release Date:
+        <input type="date" name="releaseDate" value="<%= date%>" required>
+    </label>
+    <button type="submit">Add Game</button>
+</form>
+
+<%- include("../partials/footer") %>
